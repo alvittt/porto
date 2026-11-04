@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Alvit Hargian – Portofolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F4F5F7; --ink:#14213D; --muted:#566079; --line:#D3D8E2; --accent:#85632B; --accent-ink:#FFFFFF;
+  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  --sans:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  color-scheme:light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0D1524; --ink:#EDEFF5; --muted:#9BA4B9; --line:#26324A; --accent:#CBA96E; --accent-ink:#0D1524;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0D1524; --ink:#EDEFF5; --muted:#9BA4B9; --line:#26324A; --accent:#CBA96E; --accent-ink:#0D1524;
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 4.5rem);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:1.0625rem;line-height:1.65;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+.wrap{width:min(100% - 3rem,68rem);margin-inline:auto}
+
+/* Header */
+.site{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+.site .wrap{display:flex;align-items:center;justify-content:space-between;height:4rem}
+.brand{font-family:var(--serif);font-size:1.3rem;font-weight:400;text-decoration:none;letter-spacing:.01em}
+.site nav{display:flex;gap:1.75rem}
+.site nav a{font-size:.95rem;font-weight:500;text-decoration:none;color:var(--muted);transition:color .2s}
+.site nav a:hover{color:var(--ink)}
+
+/* Hero */
+.hero{padding:clamp(4rem,12vw,9rem) 0 clamp(3.5rem,9vw,7rem)}
+.hero h1{font-family:var(--serif);font-weight:300;font-size:clamp(2.5rem,6.4vw,5.4rem);line-height:1.06;letter-spacing:-.02em;margin:0;max-width:17em}
+.hero-foot{display:flex;flex-wrap:wrap;align-items:flex-start;gap:2rem 4rem;margin-top:3rem;padding-top:1.75rem;border-top:1px solid var(--accent);max-width:46rem}
+.hero-foot p{margin:0;max-width:30rem;color:var(--muted)}
+.actions{display:flex;flex-wrap:wrap;gap:.75rem}
+.btn{display:inline-block;padding:.75rem 1.4rem;border:1px solid var(--ink);border-radius:2px;font-weight:500;font-size:.95rem;text-decoration:none;transition:background .2s,color .2s}
+.btn.primary{background:var(--ink);color:var(--bg)}
+.btn.primary:hover{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn.ghost:hover{background:var(--ink);color:var(--bg)}
+@media (prefers-reduced-motion:no-preference){
+  .hero h1,.hero-foot{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+  .hero-foot{animation-delay:.25s}
+  @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+}
+
+/* Sections */
+section.block{padding:clamp(3.5rem,8vw,6rem) 0;border-top:1px solid var(--line)}
+.block h2{font-family:var(--serif);font-weight:400;font-size:clamp(1.8rem,3.6vw,2.6rem);line-height:1.15;letter-spacing:-.01em;margin:0 0 2.5rem}
+
+/* Project index */
+.index{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.item{border-bottom:1px solid var(--line)}
+.row{all:unset;box-sizing:border-box;display:grid;grid-template-columns:minmax(0,1fr) 12rem 4rem;align-items:baseline;gap:1rem;width:100%;padding:1.6rem 0;cursor:pointer}
+.row:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.row .title{font-family:var(--serif);font-weight:300;font-size:clamp(1.5rem,3.2vw,2.35rem);line-height:1.15;letter-spacing:-.01em;transition:color .2s,transform .3s}
+.row .cat{color:var(--muted);font-size:.95rem}
+.row .yr{color:var(--muted);font-size:.95rem;text-align:right;font-variant-numeric:tabular-nums}
+.row:hover .title,.item.open .title{color:var(--accent)}
+.row:hover .title{transform:translateX(.35rem)}
+.panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s ease}
+.panel>div{overflow:hidden;visibility:hidden}
+.item.open .panel{grid-template-rows:1fr}
+.item.open .panel>div{visibility:visible}
+.detail{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:2rem;padding:0 0 2rem}
+.detail .info-col{display:flex;flex-direction:column;justify-content:flex-start}
+.detail .desc{margin:0 0 1.25rem;max-width:36rem}
+.detail dl{display:grid;grid-template-columns:auto 1fr;gap:.35rem 1.5rem;margin:0 0 1.5rem;font-size:.95rem}
+.detail dt{color:var(--muted)}
+.detail dd{margin:0}
+.detail .video-col{width:100%}
+.detail .video-col video{width:100%;max-height:420px;border-radius:6px;border:1px solid var(--line);background:#000;object-fit:contain}
+@media (prefers-reduced-motion:reduce){.panel,.row .title{transition:none}}
+
+/* About */
+.about{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:2rem 5rem}
+.about h2{margin:0}
+.about p{margin:0 0 1.25rem;max-width:34rem;color:var(--muted)}
+.about p:first-child{color:var(--ink);font-family:var(--serif);font-size:1.45rem;line-height:1.45;font-weight:300}
+.skills{margin:2rem 0 0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid var(--line);max-width:34rem}
+.skills li{padding:.8rem 0;border-bottom:1px solid var(--line);font-size:.98rem}
+
+/* Contact */
+.contact p{margin:0 0 1.5rem;max-width:28rem;color:var(--muted)}
+.mail{display:inline-block;font-family:var(--serif);font-weight:300;font-size:clamp(1.7rem,5vw,3.4rem);letter-spacing:-.015em;text-decoration:none;border-bottom:1px solid var(--accent);padding-bottom:.1em;transition:color .2s}
+.mail:hover{color:var(--accent)}
+.social{display:flex;flex-wrap:wrap;gap:1.5rem;margin:2.5rem 0 0;padding:0;list-style:none}
+.social a{color:var(--muted);text-decoration:none;font-weight:500;transition:color .2s}
+.social a:hover{color:var(--ink)}
+
+footer{border-top:1px solid var(--line);padding:1.75rem 0 2.5rem;color:var(--muted);font-size:.9rem}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.5rem 2rem}
+
+@media (max-width:720px){
+  .wrap{width:min(100% - 2.5rem,68rem)}
+  .site nav{gap:1.1rem}
+  .row{grid-template-columns:minmax(0,1fr) auto}
+  .row .cat{grid-column:1;grid-row:2;font-size:.9rem}
+  .row .yr{grid-column:2;grid-row:1}
+  .detail{grid-template-columns:minmax(0,1fr)}
+  .about{grid-template-columns:minmax(0,1fr)}
+  .skills{grid-template-columns:minmax(0,1fr)}
+}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="#top">Alvit Hargian</a>
+    <nav aria-label="Navigasi utama">
+      <a href="#proyek">Proyek</a>
+      <a href="#tentang">Tentang</a>
+      <a href="#kontak">Kontak</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <h1>Saya merancang dan membangun produk digital yang rapi, jelas, dan nyaman dipakai.</h1>
+      <div class="hero-foot">
+        <p>Halo, saya Alvit Hargian. Saya fokus pada detail kecil yang membuat sebuah produk terasa profesional. Berikut beberapa proyek yang pernah saya kerjakan.</p>
+        <div class="actions">
+          <a class="btn primary" href="#proyek">Lihat proyek</a>
+          <a class="btn ghost" href="#kontak">Hubungi saya</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="proyek">
+    <div class="wrap">
+      <h2>Proyek terpilih</h2>
+      <ul class="index" id="index"></ul>
+    </div>
+  </section>
+
+  <section class="block" id="tentang">
+    <div class="wrap about">
+      <h2>Tentang saya</h2>
+      <div>
+        <p>Saya senang mengubah ide yang masih kabur menjadi sesuatu yang bisa dipakai orang setiap hari.</p>
+        <p>Pengembang aplikasi mobile, web, dan solusi Computer Vision yang berfokus pada fungsionalitas, kemudahan pengguna, serta kerapian antarmuka.</p>
+        <ul class="skills" id="skills"></ul>
+      </div>
+    </div>
+  </section>
+
+<section class="block contact" id="kontak">
+    <div class="wrap">
+      <h2>Contact Person</h2>
+      <p>Punya proyek atau ide yang ingin dibicarakan? Kirim email, biasanya saya balas dalam satu atau dua hari.</p>
+      <a class="mail" href="mailto:alvithargian@gmail.com">alvithargian@gmail.com</a>
+      <ul class="social">
+        <li><a href="https://github.com/alvittt" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Alvit Hargian</span>
+    <a href="#top">Kembali ke atas</a>
+  </div>
+</footer>
+
+<script>
+var projects = [
+  {
+    title: "Stokku – Aplikasi Manajemen Stok Barang",
+    cat: "Aplikasi Android",
+    year: "2026",
+    desc: "Stokku merupakan aplikasi manajemen persediaan barang berbasis Android yang dirancang untuk membantu pengguna dalam mengelola dan memantau ketersediaan stok barang secara digital. Aplikasi ini menyediakan fitur pencatatan data barang, pengelolaan kategori, transaksi barang masuk dan keluar, serta pengaturan harga jual berdasarkan jenis transaksi. Selain itu, Stokku dilengkapi dengan fitur pencatatan piutang, pengaturan satuan barang secara manual, penambahan foto produk, dan pembuatan laporan dalam format PDF. Aplikasi ini dirancang dengan tampilan yang sederhana dan mudah digunakan tanpa memerlukan proses login.",
+    role: "Perancangan dan pengembangan aplikasi.",
+    tech: "Android Studio, Kotlin, SQLite/Room",
+    video: "videos/stokku.mp4"
+  },
+  {
+    title: "Fintrack – Aplikasi Pencatatan Keuangan",
+    cat: "Website",
+    year: "2026",
+    desc: "Fintrack merupakan aplikasi berbasis website yang dikembangkan untuk membantu pengguna dalam mengelola dan mencatat aktivitas keuangan secara digital. Aplikasi ini menyediakan fitur pencatatan pemasukan dan pengeluaran, pengelolaan transaksi, serta dashboard yang menampilkan ringkasan kondisi keuangan pengguna. Dengan adanya sistem pencatatan ini, pengguna dapat memantau arus keuangan dan mengetahui jumlah pemasukan maupun pengeluaran dengan lebih mudah. Aplikasi ini dikembangkan dengan mengintegrasikan database untuk menyimpan dan mengelola data transaksi pengguna.",
+    role: "Perancangan dan pengembangan website.",
+    tech: "Next.js, React, Supabase",
+    video: "videos/fintrack.mp4"
+  },
+  {
+    title: "Weather App – Aplikasi Informasi Cuaca",
+    cat: "Aplikasi Android",
+    year: "2026",
+    desc: "Weather App merupakan aplikasi berbasis Android yang dikembangkan untuk memberikan informasi mengenai kondisi cuaca berdasarkan lokasi pengguna. Aplikasi ini menampilkan beberapa informasi, seperti suhu udara, kelembapan, kecepatan angin, kondisi cuaca, dan ikon cuaca. Selain itu, aplikasi dilengkapi dengan fitur pencarian lokasi, lokasi pengguna saat ini, riwayat pencarian, serta pilihan tampilan mode gelap. Data informasi cuaca diperoleh melalui integrasi OpenWeather API sehingga pengguna dapat memperoleh informasi cuaca secara lebih praktis.",
+    role: "Perancangan UI/UX dan pengembangan aplikasi.",
+    tech: "Android Studio, Kotlin, OpenWeather API",
+    video: "videos/weather-app.mp4"
+  },
+  {
+    title: "Cookpad – Aplikasi Resep Makanan",
+    cat: "Aplikasi Android",
+    year: "2026",
+    desc: "Cookpad merupakan aplikasi berbasis Android yang dirancang untuk memudahkan pengguna dalam mencari dan melihat berbagai resep makanan. Aplikasi ini memiliki fitur registrasi dan login untuk menyimpan identitas pengguna secara lokal pada perangkat. Setelah berhasil masuk, pengguna dapat menjelajahi daftar resep makanan, melihat detail resep, serta mengetahui bahan-bahan dan langkah-langkah pembuatannya. Pengembangan aplikasi ini berfokus pada kemudahan penggunaan atau User Experience (UX), sehingga pengguna dapat mengakses informasi resep melalui tampilan yang sederhana, menarik, dan mudah dipahami.",
+    role: "Perancangan UI/UX dan pengembangan aplikasi.",
+    tech: "Android Studio, Kotlin, penyimpanan lokal",
+    video: "videos/cookpad.mp4"
+  },
+  {
+    title: "Deteksi Objek Kucing Menggunakan YOLOv8",
+    cat: "Computer Vision",
+    year: "2026",
+    desc: "Proyek deteksi objek kucing merupakan salah satu kegiatan praktikum yang bertujuan untuk mempelajari penerapan teknologi Computer Vision dalam mengenali objek pada gambar. Objek yang digunakan dalam proyek ini adalah kucing, dengan proses awal berupa pengumpulan dataset dan pelabelan gambar menggunakan aplikasi LabelImg. Setiap gambar diberikan anotasi atau bounding box untuk menandai posisi objek kucing. Dataset yang telah melalui proses pelabelan tersebut kemudian dipersiapkan sebagai data untuk pengembangan sistem deteksi objek menggunakan algoritma YOLOv8.",
+    role: "Pengumpulan dataset dan pelabelan objek.",
+    tech: "YOLOv8, LabelImg",
+    video: null
+  }
+];
+
+var skills = ["Pengembangan Android (Kotlin)", "Full-Stack Web (Next.js, React)", "Database (Supabase, SQLite/Room)", "Computer Vision (YOLOv8, LabelImg)", "Integrasi REST API", "Desain UI/UX"];
+
+var list = document.getElementById("index");
+projects.forEach(function(p, i){
+  var li = document.createElement("li");
+  li.className = "item" + (i === 0 ? " open" : "");
+  
+  var videoHtml = p.video 
+    ? '<div class="video-col"><video controls preload="metadata"><source src="' + p.video + '" type="video/mp4">Browser Anda tidak mendukung elemen video.</video></div>' 
+    : '';
+
+  li.innerHTML =
+    '<button class="row" type="button" aria-expanded="' + (i === 0) + '" aria-controls="p' + i + '">' +
+      '<span class="title"></span><span class="cat"></span><span class="yr"></span></button>' +
+    '<div class="panel" id="p' + i + '"><div><div class="detail">' +
+      '<div class="info-col">' +
+        '<p class="desc"></p>' +
+        '<dl><dt>Peran</dt><dd class="role"></dd><dt>Teknologi</dt><dd class="tech"></dd></dl>' +
+      '</div>' +
+      videoHtml +
+    '</div></div></div>';
+
+  li.querySelector(".title").textContent = p.title;
+  li.querySelector(".cat").textContent = p.cat;
+  li.querySelector(".yr").textContent = p.year;
+  li.querySelector(".desc").textContent = p.desc;
+  li.querySelector(".role").textContent = p.role;
+  li.querySelector(".tech").textContent = p.tech;
+  list.appendChild(li);
+});
+
+list.addEventListener("click", function(e){
+  var btn = e.target.closest(".row");
+  if(!btn) return;
+  var item = btn.parentNode;
+  var open = !item.classList.contains("open");
+  
+  list.querySelectorAll(".item").forEach(function(it){
+    it.classList.remove("open");
+    it.querySelector(".row").setAttribute("aria-expanded","false");
+    var vid = it.querySelector("video");
+    if(vid) vid.pause();
+  });
+  
+  if(open){ 
+    item.classList.add("open"); 
+    btn.setAttribute("aria-expanded","true"); 
+  }
+});
+
+var sk = document.getElementById("skills");
+skills.forEach(function(s){ var li = document.createElement("li"); li.textContent = s; sk.appendChild(li); });
+</script>
+</body>
+</html>
